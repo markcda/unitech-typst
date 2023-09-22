@@ -14,6 +14,8 @@
   year: "2023",
   table_of_contents: true,
   links: (
+    (type: "doc", title: "Доктрина информационной безопасности Российской Федерации (от 5 декабря 2016 г.)"),
+    (type: "book", author: "Титов Климентий", title: "Севейна", publisher: "Литрес.Самиздат", year: "2019"),
     (type: "web", title: "Writing In Typst Tutorial", link: "https://typst.app/docs/tutorial/writing-in-typst", access_date: "22.09.2023"),
   ),
 )
