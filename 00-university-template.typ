@@ -11,11 +11,6 @@
   city: "",
   year: "",
 ) = {
-  // Устанавливаем параметры титульного листа.
-  set page(
-    paper: "a4",
-    margin: (left: 30mm, right: 15mm, top: 15mm, bottom: 15mm),
-  )
   // Указываем институт и кафедру.
   set align(center)
   set text(weight: "bold")
@@ -98,6 +93,10 @@
   content,
 ) = {
   set document(author: author.name, title: title)
+  set page(
+    paper: "a4",
+    margin: (left: 30mm, right: 15mm, top: 15mm, bottom: 15mm),
+  )
   set text(font: "Times New Roman", size: 14pt, lang: "ru")
   mk_title_page(
     header: header,
@@ -149,15 +148,25 @@
     for source in links {
       src_cntr.display()
       [. ]
+      if source.type == "book" {
+        [#source.author - ]
+      }
       source.title
       [. ]
       if source.type == "web" {
         [Электронный ресурс. Режим доступа: ]
-        source.link
+        link(source.link)[#source.link]
         [ (дата обращения: ]
         source.access_date
         [).]
+      } else if source.type == "book" {
+        [Издательство "]
+        source.publisher
+        [", ]
+        source.year
+        [ г.]
       }
+      src_cntr.step()
       linebreak()
     }
   }
