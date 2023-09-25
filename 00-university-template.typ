@@ -115,7 +115,6 @@
     city: city,
     year: year,
   )
-  set heading(numbering: "1.")
   set page(numbering: "1")
   if table_of_contents == true {
     mk_table_of_contents()
@@ -126,6 +125,7 @@
     show heading: it => {
       pagebreak()
       set align(center)
+      set text(16pt, hyphenate: false)
       it
       par(text(size: 0.35em, h(0.0em)))
     }
